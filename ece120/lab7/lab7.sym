@@ -1,0 +1,17 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	LOOP              3006
+//	NEXT_ROW          300A
+//	DONE_COLUMN       300D
+//	NEXT_COLUMN       3010
+//	ZERO              3014
+//	OT                3015
+//	NEW_LINE          301B
+//	DONE              3020
+//	FIVEK             3021
+//	EIGHT             3022
+//	NL                3023
+//	FONT_DATA         3024
+

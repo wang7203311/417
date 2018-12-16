@@ -1,0 +1,13 @@
+late points               :   0
+return value correct      :   5/  5
+output length + nl correct:  10/ 10
+correct chars used        :   5/  5
+correct with four regions :  35/ 35
+correct with fewer regions:  15/ 15
+FUNCTIONALITY TOTAL       :  70/ 70
+STYLE TOTAL               :   0/ 15
+intro paragraph           :   5/  5
+clarity, warnings         :   10/ 10
+COMMENTS AND CLARITY TOTAL:   15/ 15
+-----------------------------------
+TOTAL                     :   85/100

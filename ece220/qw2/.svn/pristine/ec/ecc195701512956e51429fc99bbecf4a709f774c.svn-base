@@ -1,0 +1,25 @@
+Compiler Output:
+****************
+
+Grade:
+******
+Late submission: 0
+find_nodes works correctly: 0/8
+dijkstra works correctly: 0/3
+new_vertex_set works correctly: 4/4
+free_vertex_set works correctly: 3/3
+new_path works correctly: 4/4
+free_path works correctly: 3/3
+mark_vertex_minimap works correctly: /10
+build_vertex_set_minimap works correctly: 0/3
+build_path_minimap works correctly: 0/3
+merge_vertex_sets works correctly: 0/6
+handle_request works correctly: 0/18
+Functionality subtotal: 14/65
+mark_vertex_minimap avoids searching pyramid tree: 0
+merge_vertex_sets uses sorted id arrays: 0
+handle_requests uses minimaps: 5
+Introductory paragraph: 5
+Function headers: 5
+Clear and well-commented: 10
+Total: 39

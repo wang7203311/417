@@ -1,0 +1,26 @@
+Compiler Output:
+****************
+gcc -c -Wall -g -o mp5_edit.o mp5_edit.c
+gcc -c -Wall -g -o gold.o gold.c
+gcc -c -Wall -g -o main.o main.c
+gcc mp5_edit.o gold.o main.o -o grade -lpng -g
+
+Grade:
+******
+Late submission: 0
+near_horizontal works correctly: 3/8
+near_vertical works correctly: 4/8
+draw_line works correctly: 3/4 (Ignore this if less than perfect.)
+draw_triangle works correctly: 0/4 (Ignore this if less than perfect.)
+draw_parallelogram works correctly: 4/4 (Ignore this if less than perfect.)
+draw_rect works correctly: 4/4
+draw_circle works correctly: 9/10
+rect_gradient works correctly: 12/12
+draw_picture acceptable output: 12
+Proper return values: 3/4
+Functionality subtotal: 39/58
+Functions call correct functions: 15
+Intro paragraph:5
+Clear and well-commented: 10
+Total: 86
+NOTE: Charlie changed the grade for near_horizontal because there was a divide-by-zero error that made the grade 0/8, but that error is not as severe as losing 8 points.

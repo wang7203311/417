@@ -1,0 +1,218 @@
+Compiler Output:
+STARTING PASS 1
+0 errors found in first pass.
+STARTING PASS 2
+0 errors found in second pass.
+
+Your schedule header:
+      | Mon  | Tue  | Wed  | Tue  | Fri  
+
+Correct schedule header:
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+
+Your output (for empty):
+      | Mon  | Tue  | Wed  | Tue  | Fri  
+07:00 |      |      |      |      |      
+08:00 |      |      |      |      |      
+09:00 |      |      |      |      |      
+10:00 |      |      |      |      |      
+11:00 |      |      |      |      |      
+12:00 |      |      |      |      |      
+13:00 |      |      |      |      |      
+14:00 |      |      |      |      |      
+15:00 |      |      |      |      |      
+16:00 |      |      |      |      |      
+17:00 |      |      |      |      |      
+18:00 |      |      |      |      |      
+19:00 |      |      |      |      |      
+20:00 |      |      |      |      |      
+21:00 |      |      |      |      |      
+22:00 |      |      |      |      |      
+
+Correct output (for empty):
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+07:00 |      |      |      |      |      
+08:00 |      |      |      |      |      
+09:00 |      |      |      |      |      
+10:00 |      |      |      |      |      
+11:00 |      |      |      |      |      
+12:00 |      |      |      |      |      
+13:00 |      |      |      |      |      
+14:00 |      |      |      |      |      
+15:00 |      |      |      |      |      
+16:00 |      |      |      |      |      
+17:00 |      |      |      |      |      
+18:00 |      |      |      |      |      
+19:00 |      |      |      |      |      
+20:00 |      |      |      |      |      
+21:00 |      |      |      |      |      
+22:00 |      |      |      |      |      
+
+Your output (for test1):
+      | Mon  | Tue  | Wed  | Tue  | Fri  
+07:00 |store |      |store |      |store 
+08:00 |breakf|breakf|breakf|breakf|breakf
+09:00 |      |first |      |first |      
+10:00 |first |      |first |      |first 
+11:00 | gym  |      |      | gym  |      
+12:00 |lunch |lunch |lunch |lunch |lunch 
+13:00 |      |      |second|second|second
+14:00 |office|      |class |class |class 
+15:00 |      |      |      |      |      
+16:00 | last | last |      | last |      
+17:00 |class |class |      |class |      
+18:00 |dinner|dinner|dinner|dinner|dinner
+19:00 |study |study |party |study |study 
+20:00 |      |      |party |      |      
+21:00 |      |      |party |concer|      
+22:00 |sleep |sleep |party |sleep |sleep 
+
+Correct output (for test1):
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+07:00 |store |      |store |      |store 
+08:00 |breakf|breakf|breakf|breakf|breakf
+09:00 |      |first |      |first |      
+10:00 |first |      |first |      |first 
+11:00 | gym  |      |      | gym  |      
+12:00 |lunch |lunch |lunch |lunch |lunch 
+13:00 |      |      |second|second|second
+14:00 |office|      |class |class |class 
+15:00 |      |      |      |      |      
+16:00 | last | last |      | last |      
+17:00 |class |class |      |class |      
+18:00 |dinner|dinner|dinner|dinner|dinner
+19:00 |study |study |party |study |study 
+20:00 |      |      |party |      |      
+21:00 |      |      |party |concer|      
+22:00 |sleep |sleep |party |sleep |sleep 
+
+Your output (for test2):
+      | Mon  | Tue  | Wed  | Tue  | Fri  
+07:00 |wakeup|getup |snooze|shower|breakf
+08:00 |sleep |procra|sleep |sleep |sleep 
+09:00 |workou|workou|  a   |  a   |  a   
+10:00 |      |      |      |      |      
+11:00 |      |      |      |      |      
+12:00 |grocer|grocer|lunch |sleep |grocer
+13:00 |      |      |      |      |      
+14:00 |      |      |      |      |      
+15:00 |      |      |      |      |      
+16:00 |      |      |      |      |      
+17:00 |      |      |      |      |      
+18:00 |      |      |      |      |      
+19:00 |      |      |      |      |      
+20:00 |  d   |      |      |      |      
+21:00 |      |      |      |kungfu|      
+22:00 |dinner|dinner|      |      |      
+
+Correct output (for test2):
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+07:00 |wakeup|getup |snooze|shower|breakf
+08:00 |sleep |procra|sleep |sleep |sleep 
+09:00 |workou|workou|  a   |  a   |  a   
+10:00 |      |      |      |      |      
+11:00 |      |      |      |      |      
+12:00 |grocer|grocer|lunch |sleep |grocer
+13:00 |      |      |      |      |      
+14:00 |      |      |      |      |      
+15:00 |      |      |      |      |      
+16:00 |      |      |      |      |      
+17:00 |      |      |      |      |      
+18:00 |      |      |      |      |      
+19:00 |      |      |      |      |      
+20:00 |  d   |      |      |      |      
+21:00 |      |      |      |kungfu|      
+22:00 |dinner|dinner|      |      |      
+
+Your output (for test3):
+      | Mon  | Tue  | Wed  | Tue  | Fri  
+07:00 |      |      |      |      |      
+08:00 |      |      |      |      |      
+09:00 |      |      |      |      |      
+10:00 |      |      |      |      |      
+11:00 |      |      |      |      |      
+12:00 |      |      |      |      |      
+13:00 |      |      |      |      |      
+14:00 |      |      |      |      |      
+15:00 |wakeup|wakeup|wakeup|wakeup|wakeup
+16:00 |sleep |sleep |sleep |sleep |sleep 
+17:00 |wakeup|wakeup|wakeup|wakeup|wakeup
+18:00 |sleep |class |class |      |class 
+19:00 |      |go to |dinner|dinner|      
+20:00 |      |      |friend|friend|study 
+21:00 |      |party |      |party |party 
+22:00 |      |movie |      |movie |  TV  
+
+Correct output (for test3):
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+07:00 |      |      |      |      |      
+08:00 |      |      |      |      |      
+09:00 |      |      |      |      |      
+10:00 |      |      |      |      |      
+11:00 |      |      |      |      |      
+12:00 |      |      |      |      |      
+13:00 |      |      |      |      |      
+14:00 |      |      |      |      |      
+15:00 |wakeup|wakeup|wakeup|wakeup|wakeup
+16:00 |sleep |sleep |sleep |sleep |sleep 
+17:00 |wakeup|wakeup|wakeup|wakeup|wakeup
+18:00 |sleep |class |class |      |class 
+19:00 |      |go to |dinner|dinner|      
+20:00 |      |      |friend|friend|study 
+21:00 |      |party |      |party |party 
+22:00 |      |movie |      |movie |  TV  
+
+Your output (for all_times):
+      | Mon  | Tue  | Wed  | Tue  | Fri  
+07:00 |test0 |      |      |      |      
+08:00 |test1 |      |      |      |      
+09:00 |      |test2 |      |      |      
+10:00 |test3 |test3 |      |      |      
+11:00 |test4 |      |test4 |      |      
+12:00 |      |      |      |test5 |      
+13:00 |test6 |      |test6 |test6 |      
+14:00 |test7 |      |test7 |      |test7 
+15:00 |      |test8 |      |      |      
+16:00 |test9 |test9 |      |      |      
+17:00 |test10|      |test10|      |      
+18:00 |test11|test11|test11|      |      
+19:00 |test12|test12|      |test12|      
+20:00 |test13|      |test13|test13|      
+21:00 |test14|      |      |      |test14
+22:00 |test15|test15|      |      |test15
+
+Correct output (for all_times):
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+07:00 |test0 |      |      |      |      
+08:00 |test1 |      |      |      |      
+09:00 |      |test2 |      |      |      
+10:00 |test3 |test3 |      |      |      
+11:00 |test4 |      |test4 |      |      
+12:00 |      |      |      |test5 |      
+13:00 |test6 |      |test6 |test6 |      
+14:00 |test7 |      |test7 |      |test7 
+15:00 |      |test8 |      |      |      
+16:00 |test9 |test9 |      |      |      
+17:00 |test10|      |test10|      |      
+18:00 |test11|test11|test11|      |      
+19:00 |test12|test12|      |test12|      
+20:00 |test13|      |test13|test13|      
+21:00 |test14|      |      |      |test14
+22:00 |test15|test15|      |      |test15
+
+Grade:
+******
+Late submission: 0
+Schedule initialization: 5
+Event translation: 15
+Schedule conflicts: 5
+Bad slot numbers: 5
+Schedule header: 0
+Prints complete schedule: 0
+Sub-Total: 30
+Doubly-nested schedule-printing loop: 10
+Uses proper subroutines from MP1: 10
+Intro paragraph: 5
+Register table for each of three parts: 15
+Clear and well-commented: 10
+Total: 80

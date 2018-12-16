@@ -1,0 +1,38 @@
+Compiler Output:
+****************
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -o mp12.o -IWALY -I. mp12.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -o TurtleScreen.o -IWALY -I. TurtleScreen.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -o main.o -IWALY -I. main.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -o mp5.o -IWALY -I. mp5.c
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -o WALYmain.o -IWALY -I. WALYmain.cpp
+(cd WALY ; make)
+make[1]: Entering directory `/class/ece220/Spring2018H/mp_grading/mp12/qw2/jni/WALY'
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYButton.o -I.. WALYButton.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYDigitDraw.o -I.. WALYDigitDraw.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYEntryBox.o -I.. WALYEntryBox.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYEntryBoxIP.o -I.. WALYEntryBoxIP.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYFilter.o -I.. WALYFilter.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYFont.o -I.. WALYFont.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYFrame.o -I.. WALYFrame.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYImage.o -I.. WALYImage.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYNetwork.o -I.. WALYNetwork.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYPlatform.o -I.. WALYPlatform.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYScreen.o -I.. WALYScreen.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYSound.o -I.. WALYSound.cpp
+g++ -c -g -Wall -DWALY_TARGET_CYGWIN -DAPP_NAME='"mp12"' -DAPP_TITLE='"ECE220 Spring 2018 MP12"' -o WALYWidget.o -I.. WALYWidget.cpp
+rm -f libWALY.a
+ar -rc libWALY.a WALYButton.o WALYDigitDraw.o WALYEntryBox.o WALYEntryBoxIP.o WALYFilter.o WALYFont.o WALYFrame.o WALYImage.o WALYNetwork.o WALYPlatform.o WALYScreen.o WALYSound.o WALYWidget.o
+make[1]: Leaving directory `/class/ece220/Spring2018H/mp_grading/mp12/qw2/jni/WALY'
+g++ -g -LWALY -LSDL -o ../mp12 mp12.o TurtleScreen.o main.o mp5.o WALYmain.o -lWALY -lSDL_image -lSDL_ttf -lSDL_mixer -lSDL -lpthread -lm
+Grade:
+******
+Late submission: 0
+openInputStream function works correctly: 5/5
+closeInputStream function works correctly: 5/5
+drawEverything function works correctly: 10/10
+color command works correctly: 5/10
+move command works correctly: 12/30
+restart command works correctly: 0/10
+turn command works correctly: 0/20
+wait command works correctly: 5/10
+Total: 42/100

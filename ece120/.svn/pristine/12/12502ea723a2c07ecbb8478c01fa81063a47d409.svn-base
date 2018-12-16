@@ -1,0 +1,40 @@
+
+; this rogram will compute the sum of positive numbers among ten numbers represented in 2's complement format
+; and will store the result in register R5
+
+
+; R0 holds the value from R3
+; R3 holds a value of pointer to point to the location of the numbers in memory that are being analyzed
+; R4 holds the value of counter
+; R5 represents the value of the summation
+
+
+0011 0001 0000 0000   ; x3100 - starting address of the program
+
+; The program description and code starts here
+
+
+; Initialization
+1110 011 000110001    ; move address to R3 from X3132
+0101 100 100 1 00000  ; clear the current value of R4
+0001 100 100 1 01010  ; initialize the value of counter to be 10
+0101 101 101 1 00000  ; clear the current value of R5
+0101 000 000 1 00000  ; clear the current value of R0
+
+; Operation and loop
+; Check the sign of the loaded value, ignore the negative value
+; increment R3 and Decrement R4
+; If R4 is negative, stop the program, else, calcate a new loaded value
+
+
+0110 000 011 000000   ; load the value from R3 to R0
+0000 110 000000001    ; check the sign of loaded value
+0001 101 101 0 00 000 ; add R5 and R0 and store the value in R5
+0001 011 011 1 00001  ; increment R3 by 1
+0001 100 100 1 11111  ; decrement the counter R4 by 1
+0000 011 111111010    ; check the condition of the counter
+
+; End
+
+1111 0000 0010 0101   ; halt the program
+

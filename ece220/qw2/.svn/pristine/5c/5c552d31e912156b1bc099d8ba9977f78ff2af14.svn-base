@@ -1,0 +1,166 @@
+1: printRev
+(1) what the code does:
+user types any sequence of number or character and the program print that sequence and
+the reverse sequence and it's length. if the user does not type any argument,
+the program will give he or she feedback to told them how to use this program
+
+(2) How it work:
+the program use recursion to find the Null character and return back a variable which
+measure the length of the string and is zero initially.
+Everytime it return back, the program print the character which is pointed by pointer and the variable 
+increment by 1
+
+(3) what argument it takes:
+string
+
+Identify the bug:
+There are three test cases that I use and yield wrong outputs:
+case 1: "lkjhg"
+the desire output : "lkjhg" reversed is "ghjkl" (length 5)
+the actual output : "lkjhg" reversed is "ghjkl" (length 32771)
+
+case 2: "good"
+the desire output : "good" reversed is "doog" (length 4)
+the actual output : "good" reversed is "doog" (length 52)
+
+case 3: "primenum"
+the desire output : "primenum" reversed is "munemirp" (length 8)
+the actual output : "primenum" reversed is "munemirp" (length -2147483640)
+
+Trace the bug:
+for case 1:
+At first I use "break print_reverse" to set a breakpoint at the function print_reverse and gdb give me a 
+feedback "Breakpoint 1 at 0x400609: file pr_buggy.c, line 40.
+run the program use the command: "run lkjhg" and the program stop at the print_reverse function.
+then I type "p rest" to check the value of variable "rest" and it show "$1 = 32767", but our desire value for rest is 0,
+then I type "s" and it go to the next instruction and because this program use recursion, every time it go to the print_reverse
+function, I use "p rest" to check the value of rest and I find it change as the following number:
+when I type "s" and gdb shows "Breakpoint 1, print_reverse (s=0x7fffffffe0d8 "lkjhg")
+then I type "p rest" and gdb shows the result "$1 = 32767".
+
+when I type "s" and gdb shows "Breakpoint 1, print_reverse (s=0x7fffffffe0d9 "kjhg")
+then I type "p rest" and gdb shows the result "$2 = 32767".
+
+when I type "s" and gdb shows "Breakpoint 1, print_reverse (s=0x7fffffffe0da "jhg")
+then I type "p rest" and gdb shows the result "$3 = 0".
+
+when I type "s" and gdb shows "Breakpoint 1, print_reverse (s=0x7fffffffe0db "hg")
+then I type "p rest" and gdb shows the result "$4 = 0".
+
+when I type "s" and gdb shows "Breakpoint 1, print_reverse (s=0x7fffffffe0dc "g")
+then I type "p rest" and gdb shows the result "$5 = 48".
+
+when I type "s" and gdb shows "Breakpoint 1, print_reverse (s=0x7fffffffe0dd "")
+then I type "p rest" and gdb shows the result "$6 = 32767".
+
+From the result that gdb shows, I find that the value of rest is not fixed. Because right now '\0' = *s the print_reversed function stops the recursion and
+return the value of rest which is not initialized. Everytime it return to the last call, it will print the character from
+"g" to "k" and the value of rest will increment by 1 and then print the final result as the value of length to the main function. 
+the other two case are almost similar to the case 1, the value of rest is not fixed and sometimes it is 0 and sometimes not. I think the erroneous behavior is that
+the program does not initialize the value of rest to 0 at first. the result of the erroneous execution is that we might return a non-zero number when the recursion end.
+
+
+Analysis of the bug:
+I think the root cause of the bug might be that the program does not initialize the value of "rest". because every time we operate the recursion, we move to a new stack frame
+and the address of variable "rest" changes as well. but we do not initialized the value of variable "rest", that address might have a value before which might not be zero.
+When we find the null character and return the value of rest, if the value of the address of variable "rest" is not 0, we will yield a wrong output.
+
+To fix that, we can initialize the variable "rest". That is change "int32_t rest" at 36 line in pr_buggy.c file to "int32_t rest = 0".
+
+
+
+2: primeNumber
+Identify the bug:
+there are three test cases that yield the wrong output
+case 1: 4
+desire output: does not show up
+actual output: 4 is prime
+
+case 2: 9
+desire output: does not show up
+actual output: 9 is prime
+
+case 3: 25
+desire output: does not show up
+actual output: 25 is prime
+
+
+Trace the bug:
+At first I use "break divides_evenly" to set a breakpoint at the function divides_evenly and gdb give me a feedback
+"Breakpoint 1 at 0x40057e: file primeNumber.c line 67"
+Then I run the program use "run" and the program stop at the breakpoint but print 3 output:
+2 is prime.
+3 is prime.
+4 is prime.
+and shows the that"Breakpoint 2, divides_evently (divisor=2, value=5) at primeNumber.c:67".
+After that I type "bt" to trace the function call and the result is:
+#0 divides_evenly (divisor=2, value=5) ar ptimeNumber.c: 67
+#1 0x0000000004005bd in is_prime()
+#2 0x000000000400548 in main() at primeNumber.c: 43
+which mean the is_prime function will not call divides_evenly function until the value is 5. In this case, it skip 4 which is not prime.
+then I type "s" to next instruction and the result shows what arguments the function divides_evenly take. From the gdb, we can find what is the value of "divisor" 
+and what is the value of "value" that pass to the function divides_evenly. After that I find that unlike the previous version which is posted on website, in new "is_prime" function, it 
+will not pass all the value of variable "divisor" that is less than the number that we test to the function divide_evenly. For example when we test the number 5, 7 and 9,
+the function "is_prime" only pass the value 2 as the divisor to the function "divides_evenly", which defines 9 as a prime number. However, we know that 9 can be divided by 3.
+From the result that gdb shows, I assume that the divisor is always less than the square root of the test number. To verify my assumption, I set check is 25 in main function use the 
+command "set var check = 25" and type "s" to execute the next instruction. From the gdb, we can find what argument the function "divides_evenly" take. After "is_prime" function pass divisor = 4 to
+the "divides_evenly", rather than trying divisor = 5, it stops the iteration and goes back to "main" function and prints "25 is prime". The erroneous behavior is that the program does not try
+divisor = 5 which can make 25 divides evenly.
+
+
+Analysis of the bug:
+I think the root cause of the bug might be that the author make mistake about the iteration condition. I guess in the "is_prime function", the iteration condition is the "test number > (divisor * divisor)", 
+which skips the divisor which is the square root of the test number. In order to fix the bug, we might need to change the iteration condition to "test number >= (divisor * divisor)". 
+
+
+3: sort:
+Identify the bug:
+There are three test cases that yield the wrong output:
+case 1:
+6
+7 2 5 4 10 1
+desire output:1 2 4 5 7 10
+actual output:1 2 3 4 5 7 (sometimes success)
+
+
+case 2:
+7
+7 2 5 4 10 1 3
+desire output:1 2 3 4 5 7 10
+actual output:0 1 2 3 4 5 7 (sometimes success)
+
+case 3:
+4 
+2 5 1 3
+desire output: 1 2 3 5
+actual output: 1 2 2 3(sometimes success)
+
+trace the bug:
+for the case 3:
+At first I use "break heapify " to set a breakpoint at the function heapify and then type "run out.txt" to run the program. The gdb shows "Breakpoint 1, heapify (arr=0x603250, n=4, i=1) at sort.c:20"
+then I type "x/10d 0x603250" which shows 10 decimal number from address 0x603250 and the result is:
+0x603250:    2    5    1      3
+0x603260:    2    0    134561 0
+0x603270;    0    0
+The array store from 0x603250 to 0x60325c and other numbers are garbage bits.
+Afte that I type "s" to execute the next instruction and use "call printArray(arr 4)" to check the order of the array as long as the program call "swap" function. When the program make a max-heap, I type "s" and 
+gdb shows the program goes into "heapSort" function and call "swap" function with parameter a=0x603250, b=0x603260. From the previous command we know that 0x603250 is the address of the first number(root)
+in the array and address 0x603260 is the address of garbage bits(2). the "swap" function swap the root(5) with a garbage bit(2) which is not in the array. As the result, the swap function introduce a garbage bit 
+in the array due to the  wrong parameters. Then program goes into heapify function with parameter arr=0x603250, n=4, i=0 to check if it is max-heap.I type "call printArray(arr, 4) to check the array and it show 2 3 1 2 
+and drop out the 5 from the array. After that the heapSort function call swap function with parameter a=0x603250 and b=60325c to swap the first number and last number in the array, pop the last number in array and 
+then decrement the size of the array by 1. Then I use command "call printArray(arr, 3)" to check the array right now show it shows "2 3 1" which mean 2 is popped out the array right now. Next, I type "s" until it 
+makes a new max-heap again and go to "heapSort" function and call swap function with parameter a=0x603250, b=0x603258, which swaps the position of root with last element in the array. I type "s" until the program end, 
+and it produce the output 1 2 2 3. Recall that when we construct the first max-heap, the "heapSort" calls swap function with parameter a=0x603250, b=0x603260, the program switches the position between root and 
+bit at 0x603260. The address of 0x603260 contains garbage bit. The result of that erroneous behavior is we introduce a garbage in the array. 
+
+
+Analysis of bug:
+I think the root cause of the bug might be that the "heapSort" function calls "swap" function with wrong parameter after we construct the first max-heap. I guess in heapSort function, it make a mistake in calculating 
+the address of the array. It calls the "swap" function with parameter &arr[0], &arr[size] rather than &arr[0], &arr[size-1]. The reason why we get a desire output sometimes is  that the garbage bits is same as root number 
+when we switch the root with garbage bits. If the garbage bit is another number other than root, our final result will not contain root number. That is why sometimes our output has a number which is not in the input list 
+or sometimes we have two same number in our output.
+
+
+
+
+

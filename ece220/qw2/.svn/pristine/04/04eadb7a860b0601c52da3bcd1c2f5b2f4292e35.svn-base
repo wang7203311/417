@@ -1,0 +1,547 @@
+/*									tab:8
+ *
+ * main.c - skeleton source file for ECE220 picture drawing program
+ *
+ * "Copyright (c) 2018 by Charles H. Zega, and Saransh Sinha."
+ *
+ * Permission to use, copy, modify, and distribute this software and its
+ * documentation for any purpose, without fee, and without written agreement is
+ * hereby granted, provided that the above copyright notice and the following
+ * two paragraphs appear in all copies of this software.
+ *
+ * IN NO EVENT SHALL THE AUTHOR OR THE UNIVERSITY OF ILLINOIS BE LIABLE TO
+ * ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
+ * DAMAGES ARISING OUT  OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION,
+ * EVEN IF THE AUTHOR AND/OR THE UNIVERSITY OF ILLINOIS HAS BEEN ADVISED
+ * OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * THE AUTHOR AND THE UNIVERSITY OF ILLINOIS SPECIFICALLY DISCLAIM ANY
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.  THE SOFTWARE
+ * PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND NEITHER THE AUTHOR NOR
+ * THE UNIVERSITY OF ILLINOIS HAS ANY OBLIGATION TO PROVIDE MAINTENANCE,
+ * SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS."
+ *
+ * Author:	    Charles Zega, Saransh Sinha
+ * Version:	    1
+ * Creation Date:   12 February 2018
+ * Filename:	    mp5.h
+ * History:
+ *	CZ	1	12 February 2018
+ *		First written.
+ */
+#include "mp5.h"
+#include <stdio.h>
+/*value_tri
+	You must write all your code only in this file, for all the functions!value_tri
+*/
+
+
+
+/*
+ *  near_horizontal
+ *
+ *
+ *
+ *
+ * INPUTS: x_start,y_start -- the coordinates of the pixel at one end of the line
+ * 	   x_end, y_end    -- the coordinates of the pixel at the other end
+ * OUTPUTS: draws a pixel to all points in between the two given pixels including
+ *          the end points
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+near_horizontal(int32_t x_start, int32_t y_start, int32_t x_end, int32_t y_end){
+	/*first we check if x_start < x_end, if not, we need to switch two coordinates of two point. after checking, we use the
+	the equation to find the x coordinates and y coordinates to draw the line pixel by pixel*/
+//set four variable
+	int32_t y_hori; 		//x_coordinate of the horizontal line
+	int32_t x_hori;			//y_coordinate of the horizontal line
+	int32_t value_hori = 1;			// the return value
+	int32_t temp;								// a temporary variable
+	if (x_start < x_end)		//check if the x_start less than x_end, if it is, operate the following loop
+	  {
+		for (x_hori = x_start; x_hori <= x_end; x_hori ++)  //the loop will end after it reach the x_end and x_hori increament by 1 after 1 operation
+				{
+					y_hori = ((2*( y_end - y_start)*( x_hori - x_start)+1)/(2*(x_end - x_start))) + y_start; //use the equation to calculate the y_coordinate
+
+									value_hori = draw_dot(x_hori, y_hori) & value_hori;			//call draw_dot to draw every pixel in that line with parameter x_hori and y_hori
+
+				}
+    }
+//condition for x_start greater or equal to x_end
+	else
+	 {
+		 //swith the x_start with x_end, y_start and y_end
+		 temp    = x_start;
+		 x_start = x_end;
+		 x_end   = temp;
+		 temp    = y_start;
+		 y_start = y_end;
+		 y_end   = temp;
+		 for (x_hori = x_start; x_hori <= x_end; x_hori ++)    //the loop will end after x_hori reach the x_end
+ 				{
+ 					y_hori = ((2*( y_end - y_start)*( x_hori - x_start)+1)/(2*(x_end - x_start))) + y_start;  //use the equation to calculate the y_hori
+
+ 									value_hori = draw_dot(x_hori, y_hori) & value_hori;  //call draw_dot to draw every pixels ib that line with parameter x_hori and y_hori
+
+ 				}
+		}
+
+	return  value_hori; //return the value of value_hori
+
+}
+
+
+/*
+ *  near_vertical
+ *
+ *
+ *
+ *
+ * INPUTS: x_start,y_start -- the coordinates of the pixel at one end of the line
+ * 	   x_end, y_end    -- the coordinates of the pixel at the other end
+ * OUTPUTS: draws a pixel to all points in between the two given pixels including
+ *          the end points
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+near_vertical(int32_t x_start, int32_t y_start, int32_t x_end, int32_t y_end){
+/*first we check if y_start < y_end, if not, we need to switch two coordinates of two point. after checking, we use the
+the equation to find the x coordinates and y coordinates to draw the line pixel by pixel*/
+//set four variables
+	int32_t y_vert;						//x_coordinate of the verticle line
+	int32_t x_vert;						//y_coordinate of the verticle line
+	int32_t value_vert = 1;		// return value of value_vert
+	int32_t temp_ver;					// temporary variables
+	if (y_start < y_end)      // check if y_start = y_end if no, operate the following code
+		{
+			for (y_vert = y_start; y_vert <= y_end ; y_vert ++)		//the loop will end until y_vert > y_end and increament by 1 after one operation
+				{
+					x_vert = ((2*(x_end - x_start)*(y_vert - y_start)+1)/(2*(y_end - y_start))) +x_start;  // use the equation to find the x_vert
+									value_vert =draw_dot(x_vert, y_vert) & value_vert ;			// call draw_dot to draw every pixel in that line with parameter x_vert and y_vert
+				}
+		}
+		// condition for y_start >= y_end
+ else
+  {
+   //swich x_start with x_end, y_start with y_end
+		temp_ver=x_start;
+		x_start = x_end;
+		x_end   = temp_ver;
+		temp_ver=y_start;
+		y_start = y_end;
+		y_end   = temp_ver;
+		for (y_vert = y_start; y_vert <= y_end ; y_vert ++) //the loop will end until y_vert > y_end and increament by 1 after one operation
+			{
+				x_vert = ((2*(x_end - x_start)*(y_vert - y_start)+1)/(2*(y_end - y_start))) +x_start; // use the equation to find the x_vert
+								value_vert =draw_dot(x_vert, y_vert) & value_vert ;   // call draw_dot to draw every pixel in that line with parameter x_vert and y_vert
+			}
+	}
+	return  value_vert;  // return the value of value_vert
+}
+
+/*
+ *  draw_line
+ *
+ *
+ *
+ *
+ * INPUTS: x_start,y_start -- the coordinates of the pixel at one end of the line
+ * 	   x_end, y_end    -- the coordinates of the pixel at the other end
+ * OUTPUTS: draws a pixel to all points in between the two given pixels including
+ *          the end points
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+draw_line(int32_t x_start, int32_t y_start, int32_t x_end, int32_t y_end){
+	/* Your code goes here! */
+/*first check if x_end = x_start, if yes, check if y_end = y_start, if is call draw_dot
+if not call near_vertical. if x_end is not equal to x_start, we calulate the slope to check which function we need
+to call. if   -1<=slope<=1, we call near_horizontal, otherwise we call near_vertical */
+//set two variables
+int32_t slope;   // the value of the slope of the line
+int32_t value_line = 1;		//the return value
+			if( x_end == x_start)   //check if x_end equal to x_start
+				{
+					if(y_end == y_start)		// check of y_end equal to y_end
+					  {
+							value_line = draw_dot(x_start, y_start) & value_line; // call draw_dot if x_end = x_start, y_end = y_start
+						}
+					else
+					value_line = near_vertical (x_start, y_start, x_end, y_end )&value_line; // call near_vertical with parameter x_start ,y_start, x_end , y_end
+				}
+				// check if x_end is not equal to x_start
+			else
+					{
+							slope = (y_end - y_start)/(x_end - x_start);   //calculate the slope according to the equation
+								if (slope >= -1 &&  slope<= 1)  // if the slope is <= 1 and >= -1
+									{
+										value_line = near_horizontal (x_start, y_start, x_end, y_end ) & value_line; //call near_horizontal with four parameters
+									}
+									// if the slope is less than -1 and greater than 1
+								else
+			  					{
+										value_line = near_vertical (x_start, y_start, x_end, y_end ) & value_line;// call near_vertical with four parameters
+									}
+					}
+	return value_line; //return the value of value_line
+}
+
+/*
+ *  draw_rect
+ *
+ *
+ *
+ *					value_line = near_vertical (x_start, y_start, x_end, y_end );
+
+ * INPUTS: x,y -- the coordinates of the of the top-left pixel of the rectangle
+ *         w,h -- the width and height, respectively, of the rectangle
+ * OUTPUTS: draws a pixel to every point of the edges of the rectangle
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+draw_rect(int32_t x, int32_t y, int32_t w, int32_t h){
+/*first use the property of rectangle to find the other three vertices
+and then draw the graph side by side by calling the draw_line function*/
+//set seven variables
+int32_t x_rt  = x + w;				//right_top x_coordinate
+int32_t y_rt  = y;		 				//right_top y_coordinate
+int32_t x_ld	= x;		 				//left_down x_coordinate
+int32_t y_ld	= y + h;				//left_down y_coordinate
+int32_t	x_rd  = x + w;			  //right_down x_coordinate
+int32_t y_rd  = y + h;				//right_down y_coordinate
+int32_t	value_rect = 1;				// the return value
+    //check is width and heigh greater or equal to 0
+		if (w >=0 && h >=0)
+			{
+				value_rect = draw_line (x, y, x_rt, y_rt) &value_rect;		//call draw_line to draw the up side
+				value_rect = draw_line (x_rt, y_rt, x_rd, y_rd) & value_rect; 	//call draw_line to draw the right side
+				value_rect = draw_line (x_ld, y_ld, x_rd, y_rd) & value_rect; 	//call draw_line to draw the bottom
+				value_rect = draw_line (x, y,x_ld, y_ld) & value_rect;		//call draw_line to draw the left side
+			}
+		// if either of width and height is 0
+		else
+			{
+				value_rect = 0;  //value_rect is 0
+			}
+	return value_rect; // return the value of value_rect
+}
+
+
+/*
+ *  draw_triangle
+ *
+ *
+ *
+ *
+ * INPUTS: x_A,y_A -- the coordinates of one of the vertices of the triangle
+ *         x_B,y_B -- the coordinates of another of the vertices of the triangle
+ *         x_C,y_C -- the coordinates of the final of the& value_para vertices of the triangle
+ * OUTPUTS: draws a pixel to every point of the edges of the triangle
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+draw_triangle(int32_t x_A, int32_t y_A, int32_t x_B, int32_t y_B, int32_t x_C, int32_t y_C){
+/*draw the graph side by side by calling the draw_line function*/
+	// set 1 variable
+	int32_t value_tri = 1;  //the return value
+		value_tri = draw_line (x_A, y_A, x_B, y_B) & value_tri;      //call draw_line to draw first side
+		value_tri = draw_line (x_B, y_B, x_C, y_C) & value_tri;			//call draw_line to draw second side
+		value_tri = draw_line (x_A, y_A, x_C, y_C) & value_tri;			//call draw_line to draw third side
+	return value_tri; //return the value of value_tri
+}
+
+/*
+ *  draw_parallelogram
+ *
+ *
+ *
+ *
+ * INPUTS: x_A,y_A -- the coordinates of one of the vertices of the parallelogram
+ *         x_B,y_B -- the coordinates of another of the vertices of the parallelogram
+ *         x_C,y_C -- the coordinates of another of the vertices of the parallelogram
+ * OUTPUTS: draws a pixel to every point of the edges of the parallelogram
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+draw_parallelogram(int32_t x_A, int32_t y_A, int32_t x_B, int32_t y_B, int32_t x_C, int32_t y_C){
+	/* Your code goes here! */
+/*first use the property of parallelogram to find the fourth vertices
+and then draw the graph line by line by put in point to the draw_line function*/
+//set three variabeles
+int32_t x_D = x_C - x_B + x_A;		//x_coordinate of the fourth vertices
+int32_t y_D = y_C - y_B + y_A;	//y_coordinate of the fourth vertices
+int32_t value_para = 1;					 // return value
+	value_para = draw_line (x_A, y_A, x_B, y_B) & value_para;		//draw the up side
+	value_para = draw_line (x_B, y_B, x_C, y_C) & value_para; 	//draw the right side
+	value_para = draw_line (x_C, y_C, x_D, y_D) & value_para;		 //draw the bottom
+	value_para = draw_line (x_D, y_D,x_A, y_A) & value_para;		//draw the left side
+	return value_para; //return the value of value_para
+}
+
+
+/*
+ *  draw_circle
+ *
+ *
+ *
+ *
+ * INPUTS: x,y -- the center of the circle
+ *         inner_r,outer_r -- the inner and outer radius of the circle
+ * OUTPUTS: draws a pixel to every point whose distance from the center is
+ * 	    greater than or equal to inner_r and less than or equal to outer_r
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+
+
+ int32_t
+ draw_circle(int32_t x, int32_t y, int32_t inner_r, int32_t outer_r){
+ 	/* Your code goes here!*/
+/*first check it is fit the requirement and then use the equation for the distance to check if is in in the outer
+radius and beyound the inner radius. If it is, draw that pixel
+*/
+// set four variabeles
+ 	int32_t value_circle = 1; // return value
+ 	int32_t x_cr;							// x_coordinate of the pixel
+ 	int32_t y_cr;							// y_coordinate of the pixel
+	int32_t dis_dot;					// distance between pixel and center
+	// check if inner radius is negative or outer radius less than inner radius
+	if (inner_r < 0 && outer_r < inner_r)
+ 			{
+ 				value_circle = 0;					// value_circle is 0
+ 			}
+ // if not
+	else
+ 			{for(y_cr = y-outer_r; y_cr <= y+outer_r;y_cr++)   // the loop will end until y_cr is greater than y +outer radius
+				{
+					for(x_cr = x - outer_r; x_cr <= x + outer_r; x_cr++)   // the loop will end until x_cr is greater than x + outer radius
+ 			 			{
+							dis_dot = ((x_cr - x)*(x_cr - x)) + ((y_cr - y)*(y_cr - y));		// calulate the distance betweem pixel and cneter
+							if(dis_dot <= (outer_r*outer_r) && dis_dot >= (inner_r*inner_r))  //if the distance <= outer_r^2 and >= inner_r ^2
+							  {
+									value_circle = draw_dot(x_cr, y_cr) & value_circle;  // draw that pixel
+								}
+						}
+				}
+
+			}
+	return value_circle; //return the value of value_circle
+ }
+
+
+/*
+ *  rect_gradient
+ *
+ *printf("success\n");
+ *
+ *
+ * INPUTS: x,y -- the coordinates of the of the top-left pixel of the rectangle
+ *         w,h -- the width and height, respectively, of the rectangle
+ *         start_color -- the color of the far left side of the rectangle
+ *         end_color -- the color of the far right side of the rectangle
+ * OUTPUTS: fills every pixel within the bounds of the rectangle with a color
+ *	    based on its position within the rectangle and the difference in
+ *          color between start_color and end_color
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+
+int32_t
+rect_gradient(int32_t x, int32_t y, int32_t w, int32_t h, int32_t start_color, int32_t end_color){
+	/* Your code goes here! */
+/* first find the intensity of three channel and then use the equation to find the intensity for every pixel, draw the pixel
+row by row */
+//set variable
+int32_t value_grad = 1;   // return value
+int32_t gradient;					// the value of gradient
+int32_t start_level;			// the intensity of start_color
+int32_t end_level;				// the intensity of end_color
+int32_t red;							// intensity for red
+int32_t green;						// intensity for green
+int32_t blue;							// intensity fot blue
+int32_t x_gr;							// x_coordinate of the pixel
+int32_t y_gr;							// y_coordinate of the pixel
+ if(h < 0 && w <0)        //check if height and with is negative
+  {
+		value_grad = 0;				// return value is 0
+	}
+// if not
+ else
+  {
+		for(y_gr = y; y_gr <= y+h; y_gr++)		// the loop end until y_gr greater than y + h.
+			{
+				for(x_gr = x; x_gr <= x+w; x_gr++)		// the loop end until x_gr greater than x + w
+					{
+  					// red
+						 start_level = (start_color & 0x00FF0000) >> 16;  //the intensity of red in start_color
+						 end_level = (end_color & 0x00FF0000) >> 16;			//the instensity of red in end_color
+						 gradient = ((2*(x_gr-x)*(end_level - start_level)+1)/(2*w)) + start_level; // use the equation to calculate the intensity of red
+						 red   = gradient << 16;							//left shift 16
+
+						//green
+						 start_level = (start_color & 0x0000FF00) >> 8;		//the intensity of green in start_color
+						 end_level   = (end_color & 0x0000FF00) >> 8;			//the intensity of green in end_color
+						 gradient = ((2*(x_gr-x)*(end_level - start_level)+1)/(2*w)) + start_level; // use the equation to calculate the intensity of green
+						 green = gradient << 8;	// left shift 8
+
+						///blue
+						 start_level = (start_color & 0x000000FF);   // the intensity of blue in start_color
+						 end_level   = (end_color & 0x000000FF);    // the intensity of blue in end_color
+						 gradient = ((2*(x_gr-x)*(end_level - start_level)+1)/(2*w)) + start_level;	//use the equation to calculate the intensity of blue
+						 blue = gradient;
+
+						 gradient = (red | green |blue);         // calculate the overal intensity
+							set_color(gradient);		// call set_color
+						 	value_grad = draw_dot(x_gr, y_gr) & value_grad; // call draw_dot to draw the pixels
+					}
+			}
+  }
+	return value_grad; //return the value of value_grad
+}
+
+
+/*
+ *  draw_picture
+ *
+ *
+ *
+ *
+ * INPUTS: none
+ * OUTPUTS: alters the image by calling any of the other functions in the file
+ * RETURN VALUE: 0 if any of the pixels drawn are out of bounds, otherwise 1
+ * SIDE EFFECTS: none
+ */
+ int32_t
+ draw_picture(){
+ 	/* Your code goes here! */
+//letter GOOGLE
+int32_t value_pic =1;						// the return value
+int32_t x_pic;									// the x_coordinate of the pixels
+int32_t y_pic;									// the y_coordinate of the pixels
+int32_t dis_pic;								// distance between pixels and center(used in semi-circle)
+int32_t color = 900;						// initialize the color
+int32_t temp_y;									//  temporary variable
+int32_t temp_y2;								// temporary variable
+//to set the background
+value_pic = rect_gradient(0,0,208, 320, 0x00000000, 0x00FFFFFF)&value_pic;
+value_pic = rect_gradient(208,0,104, 320, 0x00FFFFFF, 0x00FF0000)&value_pic;
+value_pic = rect_gradient(312,0,312, 320, 0x00FF0000, 0x00FFFFFF)&value_pic;
+//to draw "G"
+	//semi-circle in the region x=0 to x = 104
+		for(y_pic = 120; y_pic <= 200;y_pic++)     //the loop will end until y_pic is greater than 200
+	     {
+		      for(x_pic = 25; x_pic <= 65; x_pic++)		// the loop will end until x_pic is greater than 65
+			      {
+				       dis_pic = ((x_pic - 65)*(x_pic - 65)) + ((y_pic - 160)*(y_pic - 160)); //calculate the distance between pixels and (65, 160)
+				       if((dis_pic) <= 1600 &&  (dis_pic >= 1089))		// if it is >= 1089 and <= 1600
+					       {
+									 color = color + 50;					//color increase 50
+									 set_color(color);				//call set_color
+						      value_pic = draw_dot(x_pic, y_pic) & value_pic;		//draw that pixel
+								 }
+				   }
+        }
+  //draw verticle line
+		 for(x_pic = 65; x_pic <= 72; x_pic++)  //the loop will end until x_pic is greater than 72
+		 		{
+					color = color +20;		// color increase20
+					set_color(color);			//set_color
+					value_pic = draw_line(x_pic, 188, x_pic, 208) & value_pic; // call draw_line with four parameters
+				}
+//draw horizontal line
+			for(y_pic = 180; y_pic <= 188; y_pic++) // the loop will end until y_pic is greater than 188
+			  {
+				  color = color + 20;		// color increase 20
+					set_color(color);			// set_color
+					value_pic = draw_line(55, y_pic, 80, y_pic)& value_pic; //call draw_line with four parameters
+			  }
+// draw two "O"
+		for(x_pic = 156; x_pic <= 260; x_pic = x_pic + 104)		// the loop end until x_pic is greater than 260
+		 {
+			 		color = color + 100;		// color increase by 1
+					set_color(color);		// set color
+			    value_pic = draw_circle(x_pic,160, 33, 40)&value_pic;  // call draw_circle to draw two "o"
+		 }
+// draw second "G"
+	//draw semi-circle
+	color = 0x006F3F00;  // set the color
+	for(y_pic = 120; y_pic <= 200;y_pic++)			// the loop will end until y_pic is greater than 200
+		 {
+				for(x_pic = 334; x_pic <= 374; x_pic++)		//the loop will end until x_pic is greater than 347
+					{
+						 dis_pic = ((x_pic - 374)*(x_pic - 374)) + ((y_pic - 160)*(y_pic - 160)); // calculaye the distance between pixel and (374, 160)
+						 if((dis_pic) <= 1600 &&  (dis_pic >= 1089))	// if distance <= 1600 and >= 1089
+							 {
+								 color = color + 50;		// color increase 50
+								 set_color(color);	//set color
+								value_pic = draw_dot(x_pic, y_pic) & value_pic; // draw that pixel
+							 }
+				 }
+			}
+//draw verticle line
+	 for(x_pic = 374; x_pic <= 380; x_pic++)	//the loop will end until x_pic greater than 380
+			{
+				color = color +20;			// color increase 20
+				set_color(color);		//set color
+				value_pic = draw_line(x_pic, 188, x_pic, 208) & value_pic; //call draw_line with four parameters
+			}
+//draw horizontal line
+		for(y_pic = 180; y_pic <= 188; y_pic++)  // the loop will end until y_pic is greater than 188
+			{
+				color = color + 20; 		// color increase 20
+				set_color(color);		//set color
+				value_pic = draw_line(363, y_pic, 389, y_pic)& value_pic; // call draw_line with four parameters
+			}
+//draw draw "L"
+	//verticle line
+		 for(x_pic = 453; x_pic <= 460; x_pic++)		// the loop will end until x_pic greater than 460
+				{
+					color = color +100;		// color increase 100
+					set_color(color);		// set color
+					value_pic = draw_line(x_pic, 125, x_pic, 198) & value_pic; //call draw_line with four parameters
+				}
+//draw horizontal line
+		for(y_pic = 188; y_pic <= 198; y_pic++) // the loop will end until y_pic greater than 198
+			{
+				color = color + 100;	//color increase 100
+				set_color(color);	// set color
+				value_pic = draw_line(460, y_pic, 485, y_pic)& value_pic;	// call draw_line with four parameters
+			}
+
+	//draw "E"
+	color = 0x007FFFFF; // set the color
+		// draw verticle line
+		for(x_pic = 547; x_pic <= 555; x_pic++)  // the loop will end until x_pic is greater than 555
+			 {
+				 color = color +150;		// color increase 150
+				 set_color(color);		// set color
+				 value_pic = draw_line(x_pic, 125, x_pic, 198) & value_pic; // draw the verticle line
+			 }
+	//draw three horizontal
+	for(temp_y = 125; temp_y<= 199; temp_y= temp_y+ 31)		// the loop will end until temp_y greater than 199
+			{
+				temp_y2 = temp_y + 11;		// temp_y2 is temp_y + 11
+					for(y_pic = temp_y; y_pic <= temp_y2; y_pic++)// the loop will end until y_pic is greater than temp_y2
+					{
+						color = color + 150;	// color increase 150
+						set_color(color);	// set color
+						value_pic = draw_line(555, y_pic, 580, y_pic)& value_pic; // draw  the horizontal line
+					}
+			}
+ 	return value_pic; // return the value of value_pic
+ }

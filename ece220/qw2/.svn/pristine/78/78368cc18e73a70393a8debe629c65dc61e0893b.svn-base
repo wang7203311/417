@@ -1,0 +1,26 @@
+tests we should do...
+
+a[i++]++
+shortcutting
+
+
+variable offsets assumed to fit in 5-bit 2's complement [-16,15]
+
+
+IF: both then and else are (possibly empty) statement lists; no real
+need to optimize
+
+FOR: init and update are POP_STACK's
+
+RETURN: our version of C has NO IMPLICIT RETURN STATEMENT, so you will
+get garbage (probably a 0) if you don't put a return in your C program;
+___should the skeleton put something other than 0?
+
+
+comparisons...
+
+a  < b   is NOT equivalent to a - b < 0 !!!
+
+x4000 < x8000 (no), but x4000 - x8000 = xC000 < 0 !
+
+so... we let them ignore overflows in a-b, presumably?

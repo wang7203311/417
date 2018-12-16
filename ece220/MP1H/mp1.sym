@@ -1,0 +1,46 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	R0_OK             3012
+//	BITS              3013
+//	VLINE             3014
+//	R0_BAD            3015
+//	STRIN             302D
+//	PRINT_SLOT        3032
+//	MORE_THAN_TWO     3045
+//	MORE_THAN_XII     3054
+//	RECOVER           3060
+//	SV_R0             3065
+//	SV_R1             3066
+//	SV_R2             3067
+//	SV_R7             3068
+//	ZERO              3069
+//	ONE               306A
+//	TWO               306B
+//	COLON             306C
+//	Z_TO_S            306D
+//	T_TO_Z            306E
+//	O_TO_Z            306F
+//	SPACE             3070
+//	PRINT_CENTERED    3071
+//	LOOP              307A
+//	DONE_LENGTH       3081
+//	DIVIDE            3086
+//	DONE_DIVIDE       308A
+//	LEFT              308E
+//	PRINT_STRING      3093
+//	RIGHT_SPACE       3096
+//	RIGHT             3096
+//	MORE_THAN_SIX     309B
+//	PRINT             309C
+//	RECOVER_CT        30A2
+//	SVR0_CT           30AA
+//	SVR1_CT           30AB
+//	SVR2_CT           30AC
+//	SVR3_CT           30AD
+//	SVR4_CT           30AE
+//	SVR5_CT           30AF
+//	SVR7_CT           30B0
+//	SPACE_CT          30B1
+

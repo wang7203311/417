@@ -1,0 +1,22 @@
+Compiler Output:
+****************
+
+Grade:
+******
+Late submission: 0
+empty_board             ->   5/  5
+print_board             ->   5/  5
+test_piece_fit          ->   7/ 10
+test_mark_piece         ->   5/  5
+try_to_move_down        ->   5/  5
+try_to_move_left        ->   5/  5
+try_to_move_right       ->   5/  5
+try_to_rotate_clockwise ->   5/  5
+try_to_rotate_cc        ->   5/  5
+remove_row              ->   5/  5
+remove_full_rows        ->   5/  5
+FUNCTIONALITY TOTAL     ->  57/ 60
+used add/remove piece   ->     /  5
+STYLE TOTAL             ->     /  5
+-----------------------------------
+TOTAL                   ->     / 100

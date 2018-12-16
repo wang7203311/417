@@ -1,0 +1,114 @@
+Compiling with test1
+********************
+STARTING PASS 1
+0 errors found in first pass.
+STARTING PASS 2
+0 errors found in second pass.
+
+Testing PRINT_SLOT
+
+Welcome to the LC-3 simulator.
+
+The contents of the LC-3 tools distribution, including sources, management
+tools, and data, are Copyright (c) 2003 Steven S. Lumetta.
+
+The LC-3 tools distribution is free software covered by the GNU General
+Public License, and you are welcome to modify it and/or distribute copies
+of it under certain conditions.  The file COPYING (distributed with the
+tools) specifies those conditions.  There is absolutely no warranty for
+the LC-3 tools distribution, as described in the file NO_WARRANTY (also
+distributed with the tools).
+
+Have fun.
+
+
+--- halting the LC-3 ---
+
+PC=x0494 IR=xB1AE PSR=x0400 (ZERO)
+R0=x0000 R1=x7FFF R2=x0000 R3=x0000 R4=x0000 R5=x0000 R6=x0000 R7=x0490 
+                   x0494 x0FF9 BRNZP TRAP_HALT
+Loaded "test.obj" and set PC to x2000
+Input: 0 | Output: "07:00 "
+Input: 1 | Output: "08:00 "
+Input: 2 | Output: "09:00 "
+Input: 3 | Output: "10:00 "
+Input: 4 | Output: "11:00 "
+Input: 5 | Output: "12:00 "
+Input: 6 | Output: "13:00 "
+Input: 7 | Output: "14:00 "
+Input: 8 | Output: "15:00 "
+Input: 9 | Output: "16:00 "
+Input: 10 | Output: "17:00 "
+Input: 11 | Output: "18:00 "
+Input: 12 | Output: "19:00 "
+Input: 13 | Output: "20:00 "
+Input: 14 | Output: "21:00 "
+Input: 15 | Output: "22:00 "
+
+
+--- halting the LC-3 ---
+
+PC=x0494 IR=xB1AE PSR=x0400 (ZERO)
+R0=x0000 R1=x7FFF R2=x0001 R3=xDEAD R4=xBEEF R5=x600D R6=xBADD R7=x0490 
+                   x0494 x0FF9 BRNZP TRAP_HALT
+
+Compiling with test2
+********************
+STARTING PASS 1
+0 errors found in first pass.
+STARTING PASS 2
+0 errors found in second pass.
+
+Testing PRINT_CENTERED
+
+Welcome to the LC-3 simulator.
+
+The contents of the LC-3 tools distribution, including sources, management
+tools, and data, are Copyright (c) 2003 Steven S. Lumetta.
+
+The LC-3 tools distribution is free software covered by the GNU General
+Public License, and you are welcome to modify it and/or distribute copies
+of it under certain conditions.  The file COPYING (distributed with the
+tools) specifies those conditions.  There is absolutely no warranty for
+the LC-3 tools distribution, as described in the file NO_WARRANTY (also
+distributed with the tools).
+
+Have fun.
+
+
+--- halting the LC-3 ---
+
+PC=x0494 IR=xB1AE PSR=x0400 (ZERO)
+R0=x0000 R1=x7FFF R2=x0000 R3=x0000 R4=x0000 R5=x0000 R6=x0000 R7=x0490 
+                   x0494 x0FF9 BRNZP TRAP_HALT
+Loaded "test.obj" and set PC to x2000
+Input: "q" | Output: "  q   "
+Input: "ww" | Output: "  ww  "
+Input: "<->" | Output: " <->  "
+Input: "1234" | Output: " 1234 "
+Input: "!@#$%" | Output: "!@#$% "
+Input: "AaBbCc" | Output: "AaBbCc"
+Input: "toolong" | Output: "toolon"
+Input: "waaaaaaaaaay too long" | Output: "waaaaa"
+Input: "   " | Output: "      "
+Input: "  A " | Output: "   A  "
+
+
+--- halting the LC-3 ---
+
+PC=x0494 IR=xB1AE PSR=x0400 (ZERO)
+R0=x0000 R1=x7FFF R2=xF00F R3=xDEAD R4=xBEEF R5=x600D R6=xBADD R7=x0490 
+                   x0494 x0FF9 BRNZP TRAP_HALT
+
+Grade:
+******
+Late submission: 0
+PRINT_SLOT correct output: 15
+PRINT_SLOT registers unmodified: 10
+PRINT_CENTERED correct output: 30
+PRINT_CENTERED registers unmodified: 10
+PRINT_SLOT not nested conditionals: Not Yet Graded
+PRINT_CENTERED not nested conditionals: Not Yet Graded
+Intro paragraphs: Not Yet Graded
+Clear and well-commented: Not Yet Graded
+Total: Not Yet Tallied

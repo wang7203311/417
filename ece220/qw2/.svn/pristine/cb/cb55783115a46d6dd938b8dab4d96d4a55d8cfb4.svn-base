@@ -1,0 +1,17 @@
+Grade:
+********************
+Late submission: 0
+printRev Identifying Bugs: 8 - wrong behavior not explicitly stated
+printRev Tracing Bugs: 10
+printRev Analysis:  10
+********************
+primeNumber Identifying Bugs: 8 - wrong behavior not explicitly stated
+primeNumber Tracing Bugs: 10
+primeNumber Analysis:  10
+********************
+sort Identifying Bugs: 8 - wrong behavior not explicitly stated 
+sort Tracing Bugs: 10
+sort Analysis:  10
+********************
+Style: 10
+Total: 94

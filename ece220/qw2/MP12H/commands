@@ -1,0 +1,6 @@
+color 000000
+turn 7
+move 100 20
+color FF0012
+move 100 20
+restart
