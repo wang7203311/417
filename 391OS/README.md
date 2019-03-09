@@ -1,16 +1,11 @@
-LOGISTICS
------
-ECE 391 MP3 
+student-distrib 文件夹中包含了我们组整个项目所设计和完成的源文件，具体的运行方式请见该文件夹中的README.md文件
 
-Checkpoint 1 due Monday 10/22/2017, 6pm in GitLab
 
-Checkpoint 2 due Monday 10/29/2017, 6pm in GitLab
 
-Checkpoint 3 due Monday 11/12/2017, 6pm in GitLab
 
-Checkpoint 4 due Tuesday 11/27/2017, 6pm in GitLab
 
-Checkpoint 5 due Monday 12/10/2017, 6pm in GitLab
+
+
 
 
 ACADEMIC INTEGRITY
