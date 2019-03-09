@@ -4,7 +4,7 @@
 import numpy as np
 import instances
 from solve import solve
-    
+import time
 def get_pent_idx(pent):
     """
     Returns the index of a pentomino.
@@ -101,12 +101,13 @@ if __name__ == "__main__":
     in <15 sec for the pentominos on the 6x10 board. 
     """
     board = instances.board_6x10
-    pents = instances.dominos
+    pents = instances.petnominos
+    start = time.time()
     sol_list = solve(board, pents)
+    
     if check_correctness(sol_list, board, pents):
         print("PASSED!")
     else:
         print("FAILED...")
-    
-    
+    print("time is ", time.time() - start)
    
